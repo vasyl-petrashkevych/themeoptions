@@ -1,0 +1,13 @@
+@import "../../styles/vars";
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $primary-color !important;
+  color: #fff !important;
+
+  h2 {
+    color: #fff;
+  }
+}

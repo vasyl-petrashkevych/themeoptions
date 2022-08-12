@@ -1,0 +1,66 @@
+@import '~antd/dist/antd.css';
+@import "./vars";
+
+.wrap {
+  margin: 0;
+}
+
+
+#root {
+  margin-left: -22px;
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .ant-menu {
+    background: $primary-color;
+
+    &-item {
+      &-active,
+      &-selected {
+        background: $menu-background;
+        color: $menu-text-color;
+
+        .ant-menu-title-content {
+          color: $menu-text-color !important;
+        }
+      }
+    }
+
+    .ant-menu-title-content {
+      color: #fff;
+    }
+  }
+}
+
+
+.ant-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#root .ant-spin-nested-loading > div > .ant-spin {
+  max-height: 100%;
+}
+
+#wpbody,
+#wpbody-content,
+.wrap,
+#root,
+.ant-layout-has-sider,
+.ant-spin-nested-loading,
+.ant-spin-container,
+.ant-empty {
+  height: 100%;
+}
+
+#wpcontent {
+  height: calc(100vh - 32px);
+}

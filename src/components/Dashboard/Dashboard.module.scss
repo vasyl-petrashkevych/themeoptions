@@ -1,0 +1,20 @@
+@import "../../styles/vars";
+
+.logo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 10px;
+
+  img {
+    width: 80px;
+  }
+}
+
+.sider {
+  background: $primary-color !important;
+}
+
+.menu {
+  background: red !important;
+}
