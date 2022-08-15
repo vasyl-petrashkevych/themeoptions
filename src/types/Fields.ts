@@ -7,6 +7,8 @@ export type IField = {
     slug: string
     title: string
     hint: string
-    required: Boolean
+    required: boolean
     value: any
+    values?: any
+    type: 'input' | 'textarea' | 'image'
 }

@@ -1,0 +1,16 @@
+
+.title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+
+  h5 {
+    margin-right: 15px;
+    margin-bottom: 0;
+  }
+}
+
+.required {
+  color: #ea2626;
+  margin-right: 3px;
+}

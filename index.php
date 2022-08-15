@@ -27,26 +27,28 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 Copyright 2005-2022 Automattic, Inc.
 */
-if (!function_exists('add_action')) {
-    echo 'Hi there!  I\'m just a plugin, not much I can do when called directly.';
-    exit;
+if ( ! function_exists( 'add_action' ) ) {
+	echo 'Hi there!  I\'m just a plugin, not much I can do when called directly.';
+	exit;
 }
 
 const THEME_OPTIONS_VERSION = '1.0.0';
-define('THEME_OPTIONS_DIR', plugin_dir_path(__FILE__));
-define('THEME_OPTIONS_URI', plugin_dir_url(__FILE__));
+define( 'THEME_OPTIONS_DIR', plugin_dir_path( __FILE__ ) );
+define( 'THEME_OPTIONS_URI', plugin_dir_url( __FILE__ ) );
 define( 'THEME_OPTIONS_ENV', $_SERVER['SERVER_NAME'] === 'localhost' ? 'development' : 'production' );
 
-require_once(THEME_OPTIONS_DIR . 'inc/Helpers.php');
-require_once(THEME_OPTIONS_DIR . 'inc/ThemeOptionsAdmin.php');
-require_once(THEME_OPTIONS_DIR . 'inc/ThemeOptionsTemplate.php');
-require_once(THEME_OPTIONS_DIR . 'inc/ThemeOptions.php');
-require_once(THEME_OPTIONS_DIR . 'inc/RestAPI.php');
+require_once( THEME_OPTIONS_DIR . 'inc/Helpers.php' );
+require_once( THEME_OPTIONS_DIR . 'inc/ThemeOptionsErrors.php' );
+require_once( THEME_OPTIONS_DIR . 'inc/ThemeOptionsAdmin.php' );
+require_once( THEME_OPTIONS_DIR . 'inc/ThemeOptionsTemplate.php' );
+require_once( THEME_OPTIONS_DIR . 'inc/ThemeOptions.php' );
+require_once( THEME_OPTIONS_DIR . 'inc/RestAPI.php' );
 
-add_action('init', ['ThemeOptions', 'init']);
+add_action( 'init', [ 'ThemeOptions', 'init' ] );
+add_action( 'init', [ 'ThemeOptionsErrors', 'catch_errors' ] );
 
-if (is_admin()) {
-    add_action('init', ['ThemeOptionsAdmin', 'init']);
+if ( is_admin() ) {
+	add_action( 'init', [ 'ThemeOptionsAdmin', 'init' ] );
 }
 
-add_action('rest_api_init', ['RestAPI', 'init']);
+add_action( 'rest_api_init', [ 'RestAPI', 'init' ] );

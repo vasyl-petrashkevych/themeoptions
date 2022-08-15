@@ -1,7 +1,7 @@
-import {Layout, Menu} from 'antd';
+import {Layout, Menu, Button} from 'antd';
 import React, {useState} from 'react';
 import {ITab} from "../../types";
-import {DashboardHeader} from "./../index";
+import {DashboardHeader, OptionsContent} from "./../index";
 import * as styles from './Dashboard.module.scss'
 
 type Props = {
@@ -10,7 +10,13 @@ type Props = {
 const {Sider, Content} = Layout;
 
 export const Dashboard: React.FC<Props> = ({fields}) => {
-    const [collapsed, setCollapsed] = useState(false);
+    const [collapsed, setCollapsed] = useState<boolean>(false);
+    const [activeTab, setActiveTab] = useState<string>(fields[0]['slug']);
+
+    const menuItemClick = ({item, key, keyPath, domEvent}) => {
+        setActiveTab(key)
+    }
+
     return (
         <Layout>
             <Sider
@@ -25,7 +31,8 @@ export const Dashboard: React.FC<Props> = ({fields}) => {
                 <Menu
                     theme="dark"
                     mode="inline"
-                    defaultSelectedKeys={[fields[0]['slug']]}
+                    onSelect={menuItemClick}
+                    defaultSelectedKeys={[activeTab]}
                     items={fields.map(field => ({
                         key: field.slug,
                         label: field.title,
@@ -43,7 +50,8 @@ export const Dashboard: React.FC<Props> = ({fields}) => {
                         minHeight: 280,
                     }}
                 >
-                    Content
+                    <OptionsContent fields={fields} activeTab={activeTab}/>
+                    <Button type="primary">Save</Button>
                 </Content>
             </Layout>
         </Layout>

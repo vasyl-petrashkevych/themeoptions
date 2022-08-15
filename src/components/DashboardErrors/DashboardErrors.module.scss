@@ -1,0 +1,16 @@
+@import "../../styles/vars";
+
+.titleBlock {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.title {
+  margin-bottom: 0 !important;
+}
+
+.list {
+  margin-left: 30px !important;
+  color: $error-color;
+}
