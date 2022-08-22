@@ -4,6 +4,7 @@ import {CloseCircleTwoTone} from '@ant-design/icons';
 import * as styles from './DashboardErrors.module.scss'
 
 const {Paragraph, Text} = Typography;
+
 type Error = {
     debug: Array<any>
     data: boolean
@@ -17,13 +18,9 @@ const debugTrace = (trace) => {
     return <ul className={styles.list}>
         {trace.map(({line, file}, id) => <li key={id}>{file} on line {line}</li>)}
     </ul>
-
 }
 
-
 export const DashboardErrors: FC<Props> = ({errors}) => {
-    console.log(errors);
-
     return <Result
         status="500"
         title="500"
@@ -32,12 +29,7 @@ export const DashboardErrors: FC<Props> = ({errors}) => {
     >
         <div className="desc">
             <Paragraph>
-                <Text
-                    strong
-                    style={{
-                        fontSize: 16,
-                    }}
-                >
+                <Text strong className={styles.errorText}>
                     <h3>The content you submitted has the following error:</h3>
                 </Text>
             </Paragraph>

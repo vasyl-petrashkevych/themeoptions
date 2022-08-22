@@ -1,9 +1,9 @@
 import {Spin} from 'antd';
-import React from 'react';
+import {FC} from 'react';
 import {useFetch} from "../hooks";
 import {Dashboard, DashboardEmpty, DashboardErrors} from "./index";
 
-export const App: React.FC = () => {
+export const App: FC = () => {
     const [status, data, error] = useFetch('fields');
     const renderDashboard = function () {
         if (error) {

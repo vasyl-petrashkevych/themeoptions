@@ -8,6 +8,7 @@ type Props = {
     hint?: string
     required?: boolean
 }
+
 export const FieldTitle: FC<Props> = ({title, hint, required}) => {
     return (
         <span className={styles.title}>
