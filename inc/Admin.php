@@ -2,10 +2,18 @@
 
 namespace ThemeOptions {
 	class Admin {
+		private const OPTIONS_PAGE_URL = 'options-general.php?page=theme_options';
+
 		public static function init() {
 			add_action( 'admin_menu', [ 'ThemeOptions\Admin', 'admin_menu' ] );
 			add_action( 'admin_init', [ 'ThemeOptions\Admin', 'admin_init' ] );
 			add_action( 'admin_enqueue_scripts', [ 'ThemeOptions\Admin', 'register_scripts' ] );
+			add_action( 'admin_bar_menu', [ 'ThemeOptions\Admin', 'admin_bar_menu' ], 500 );
+
+			add_filter( 'plugin_action_links_themeoptions/index.php', [
+				'ThemeOptions\Admin',
+				'add_action_links'
+			] );
 		}
 
 		public static function admin_init() {
@@ -20,6 +28,28 @@ namespace ThemeOptions {
 				'theme_options',
 				[ 'ThemeOptions\Admin', 'options_page_content' ],
 			);
+		}
+
+		public static function add_action_links( $actions ): array {
+			$links = [
+				'<a href="' . admin_url( self::OPTIONS_PAGE_URL ) . '">' . Helpers::__( 'Settings' ) . '</a>',
+				'<a href="' . Helpers::README_LINK . '" target="_blank">' . Helpers::__( 'Documentation' ) . '</a>',
+			];
+
+			return array_merge( $links, $actions );
+		}
+
+		public static function admin_bar_menu( \WP_Admin_Bar $admin_bar ) {
+			$admin_bar->add_menu( [
+				'id'     => 'menu-id',
+				'parent' => null,
+				'group'  => null,
+				'title'  => Helpers::__( 'Theme Options' ),
+				'href'   => admin_url( admin_url( self::OPTIONS_PAGE_URL ) ),
+				'meta'   => [
+					'title' => Helpers::__( 'Theme Options' ), //This title will show on hover
+				]
+			] );
 		}
 
 		public static function register_scripts() {

@@ -22,6 +22,7 @@ namespace ThemeOptions {
 		public static function get_fields() {
 			self::get_options();
 			$response = self::$fields;
+
 			if ( ! empty( $response ) ) {
 				foreach ( $response as $option_id => $option ) {
 					$slug_data = get_option( $option['slug'] );
