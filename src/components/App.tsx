@@ -5,6 +5,7 @@ import {Dashboard, DashboardEmpty, DashboardErrors} from "./index";
 
 export const App: React.FC = () => {
     const [status, data, error] = useFetch('fields');
+
     const renderDashboard = function () {
         if (error) {
             return <DashboardErrors errors={data.response}/>

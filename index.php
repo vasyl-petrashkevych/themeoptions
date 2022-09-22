@@ -38,17 +38,23 @@ define( 'THEME_OPTIONS_URI', plugin_dir_url( __FILE__ ) );
 define( 'THEME_OPTIONS_ENV', $_SERVER['SERVER_NAME'] === 'localhost' ? 'development' : 'production' );
 
 require_once( THEME_OPTIONS_DIR . 'inc/Helpers.php' );
-require_once( THEME_OPTIONS_DIR . 'inc/ThemeOptionsErrors.php' );
-require_once( THEME_OPTIONS_DIR . 'inc/ThemeOptionsAdmin.php' );
-require_once( THEME_OPTIONS_DIR . 'inc/ThemeOptionsTemplate.php' );
-require_once( THEME_OPTIONS_DIR . 'inc/ThemeOptions.php' );
+require_once( THEME_OPTIONS_DIR . 'inc/Errors.php' );
+require_once( THEME_OPTIONS_DIR . 'inc/Admin.php' );
+require_once( THEME_OPTIONS_DIR . 'inc/Template.php' );
+require_once( THEME_OPTIONS_DIR . 'inc/Options.php' );
 require_once( THEME_OPTIONS_DIR . 'inc/RestAPI.php' );
 
-add_action( 'init', [ 'ThemeOptions', 'init' ] );
-add_action( 'init', [ 'ThemeOptionsErrors', 'catch_errors' ] );
+add_action( 'init', [ 'ThemeOptions\Errors', 'catch_errors' ] );
+add_action( 'admin_bar_menu', [ 'ThemeOptions\Admin', 'admin_menu_bar' ], 100 );
 
 if ( is_admin() ) {
-	add_action( 'init', [ 'ThemeOptionsAdmin', 'init' ] );
+	add_action( 'init', [ 'ThemeOptions\Admin', 'init' ] );
 }
 
-add_action( 'rest_api_init', [ 'RestAPI', 'init' ] );
+add_action( 'rest_api_init', [ 'ThemeOptions\RestAPI', 'init' ] );
+
+if ( ! function_exists( 'get_theme_option' ) ) {
+	function get_theme_option( string $tub, string $slug ) {
+		return \ThemeOptions\Options::get_option( $tub, $slug );
+	}
+}

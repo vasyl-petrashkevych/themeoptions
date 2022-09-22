@@ -51,7 +51,6 @@ export const Dashboard: React.FC<Props> = ({fields}) => {
                     }}
                 >
                     <OptionsContent fields={fields} activeTab={activeTab}/>
-                    <Button type="primary">Save</Button>
                 </Content>
             </Layout>
         </Layout>
