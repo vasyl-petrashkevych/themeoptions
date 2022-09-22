@@ -3,7 +3,6 @@
 namespace ThemeOptions {
 	class Options {
 		private static bool $initiated = false;
-
 		private static array $data = [];
 		private static array $fields = [];
 
@@ -46,6 +45,7 @@ namespace ThemeOptions {
 			if ( ! empty( self::$fields ) ) {
 				foreach ( self::$fields as $option ) {
 					self::$data[ $option['slug'] ] = [];
+
 					$slug_data = json_decode( get_option( Helpers::generate_option_name( $option['slug'] ) ), true );
 					if ( $slug_data ) {
 						foreach ( $option['options'] as $field ) {

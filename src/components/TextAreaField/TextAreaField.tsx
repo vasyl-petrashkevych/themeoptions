@@ -4,6 +4,7 @@ import {Input, Form} from "antd";
 import {FieldTitle, FieldWrapper} from '../index'
 
 const {TextArea} = Input;
+
 export const TextAreaField: FC<IField> = (data) => {
     useEffect(() => console.log('TextAreaField'), [])
     const {slug, title, hint, required, value} = data;

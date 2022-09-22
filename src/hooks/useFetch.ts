@@ -27,7 +27,7 @@ export function useFetch(query: string) {
 
     useEffect(() => {
         if (!query) return;
-        fetchData();
+        fetchData()
     }, [fetchData]);
 
     return [status, data, error]

@@ -1,45 +1,25 @@
-import {Layout, Menu, Button} from 'antd';
+import {Layout, Button} from 'antd';
 import React, {useState} from 'react';
 import {ITab} from "../../types";
 import {DashboardHeader, OptionsContent} from "./../index";
-import * as styles from './Dashboard.module.scss'
+import {DashboardSider} from "../DashboardSider/DashboardSider";
+
+const {Content} = Layout;
 
 type Props = {
     fields: ITab[];
 }
-const {Sider, Content} = Layout;
 
 export const Dashboard: React.FC<Props> = ({fields}) => {
-    const [collapsed, setCollapsed] = useState<boolean>(false);
     const [activeTab, setActiveTab] = useState<string>(fields[0]['slug']);
 
-    const menuItemClick = ({item, key, keyPath, domEvent}) => {
+    const menuItemClick = ({key}) => {
         setActiveTab(key)
     }
 
     return (
         <Layout>
-            <Sider
-                trigger={null}
-                collapsible
-                collapsed={collapsed}
-                className={styles.sider}
-            >
-                <div className={styles.logo}>
-                    <img src={`${window['themeoptionsPlugin'].url}/src/Images/logo.png`} alt='logo'/>
-                </div>
-                <Menu
-                    theme="dark"
-                    mode="inline"
-                    onSelect={menuItemClick}
-                    defaultSelectedKeys={[activeTab]}
-                    items={fields.map(field => ({
-                        key: field.slug,
-                        label: field.title,
-                    }))
-                    }
-                />
-            </Sider>
+            <DashboardSider activeTab={activeTab} menuClick={menuItemClick} fields={fields}/>
             <Layout className="site-layout">
                 <DashboardHeader/>
                 <Content
