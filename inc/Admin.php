@@ -2,6 +2,8 @@
 
 namespace ThemeOptions {
 	class Admin {
+		private const OPTIONS_PAGE_URL = 'options-general.php?page=theme_options';
+
 		public static function init() {
 			add_action( 'admin_menu', [ 'ThemeOptions\Admin', 'admin_menu' ] );
 			add_action( 'admin_init', [ 'ThemeOptions\Admin', 'admin_init' ] );
@@ -35,12 +37,6 @@ namespace ThemeOptions {
 				Helpers::__( 'Theme Options' ),
 				'manage_options',
 				'theme_options',
-				[ 'ThemeOptions\Admin', 'options_page' ],
-			);
-		}
-
-		public static function register_scripts() {
-
 				[ 'ThemeOptions\Admin', 'options_page_content' ],
 			);
 		}
@@ -96,22 +92,6 @@ namespace ThemeOptions {
 					'nonce' => wp_create_nonce( 'wp_rest' ),
 				]
 			);
-		}
-
-		public static function options_page() { ?>
-
-			wp_localize_script( Helpers::TEXT_DOMAIN,
-				Helpers::TEXT_DOMAIN . 'Plugin', [
-					'version' => THEME_OPTIONS_VERSION,
-					'title'   => Helpers::__( 'Theme Options' ),
-					'url'     => THEME_OPTIONS_URI,
-				] );
-
-			wp_localize_script( Helpers::TEXT_DOMAIN,
-				Helpers::TEXT_DOMAIN . 'ApiNonce', [
-					'root'  => esc_url_raw( rest_url() ),
-					'nonce' => wp_create_nonce( 'wp_rest' ),
-				] );
 		}
 
 		public static function options_page_content() { ?>
