@@ -56,6 +56,37 @@ namespace ThemeOptions {
 			);
 		}
 
+		public static function gallery( $slug, $title, $options, $hint = '', $required = false ) {
+
+			if ( gettype( $options ) !== 'array' ) {
+				Errors::add_error( Helpers::TEMPLATE_ERRORS, 'Options should be array', $options );
+
+				return false;
+			}
+
+			return array_merge(
+				self::general_pattern( $slug, $title, $options[0], $hint, $required ),
+				[
+					'type'    => 'gallery',
+					'options' => $options,
+				]
+			);
+		}
+
+		public static function select( $slug, $title, $options, $hint = '', $required = false ) {
+
+			if ( gettype( $options ) !== 'array' ) {
+				Errors::add_error( Helpers::TEMPLATE_ERRORS, 'Options should be array', $options );
+
+				return false;
+			}
+
+			return array_merge(
+				self::general_pattern( $slug, $title, $options[0], $hint, $required ),
+				[ 'type' => 'select' ]
+			);
+		}
+
 		public static function tab( $slug, $title, $options ): array {
 			return [
 				'slug'    => $slug,

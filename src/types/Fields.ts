@@ -12,3 +12,8 @@ export type IField = {
     values?: any
     type: 'input' | 'textarea' | 'image'
 }
+
+export type IError = {
+    debug: Array<any>
+    message: string
+}

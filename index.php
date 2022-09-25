@@ -44,7 +44,7 @@ require_once( THEME_OPTIONS_DIR . 'inc/Template.php' );
 require_once( THEME_OPTIONS_DIR . 'inc/Options.php' );
 require_once( THEME_OPTIONS_DIR . 'inc/RestAPI.php' );
 
-add_action( 'admin_bar_menu', [ 'ThemeOptions\Admin', 'admin_bar_menu' ] );
+add_action( 'admin_bar_menu', [ 'ThemeOptions\Admin', 'admin_bar_menu' ], 100 );
 add_action( 'init', [ 'ThemeOptions\Errors', 'catch_errors' ] );
 
 if ( is_admin() ) {

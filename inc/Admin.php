@@ -19,18 +19,6 @@ namespace ThemeOptions {
 			load_plugin_textdomain( Helpers::TEXT_DOMAIN );
 		}
 
-		public static function admin_menu_bar( \WP_Admin_Bar $admin_bar ) {
-			if ( ! current_user_can( 'manage_options' ) ) {
-				return;
-			}
-
-			$admin_bar->add_menu( [
-				'id'    => Helpers::TEXT_DOMAIN,
-				'title' => Helpers::__( 'Theme Options' ),
-				'href'  => admin_url( 'options-general.php?page=theme_options' ),
-			] );
-		}
-
 		public static function admin_menu() {
 			add_options_page(
 				Helpers::__( 'Theme Options' ),
@@ -56,7 +44,7 @@ namespace ThemeOptions {
 				'parent' => null,
 				'group'  => null,
 				'title'  => Helpers::__( 'Theme Options' ),
-				'href'   => admin_url( admin_url( self::OPTIONS_PAGE_URL ) ),
+				'href'   => admin_url( self::OPTIONS_PAGE_URL ),
 				'meta'   => [
 					'title' => Helpers::__( 'Theme Options' ), //This title will show on hover
 				]

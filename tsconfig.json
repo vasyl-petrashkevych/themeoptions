@@ -23,7 +23,9 @@
     "noImplicitAny": false,
     "types": [
       "node",
-      "express"
+      "express",
+      "react/next",
+      "react-dom/next"
     ],
     "plugins": [
       {

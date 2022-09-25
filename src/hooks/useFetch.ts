@@ -1,9 +1,13 @@
 import {useState, useEffect, useCallback} from 'react';
+import {IError} from "../types";
 
-export function useFetch(query: string) {
+type State<T> = [boolean, T, IError[]]
+
+export function useFetch<T = unknown>(query: string): State<T> {
     const [status, setStatus] = useState<boolean>(false);
-    const [data, setData] = useState<Array<any>>([]);
-    const [error, setError] = useState<boolean>(false);
+    const [data, setData] = useState<T>({} as T);
+    const [error, setError] = useState<IError[]>({} as IError[]);
+
     const pluginData = window['themeoptionsApiNonce'];
 
     const fetchData = useCallback(async () => {
@@ -19,7 +23,7 @@ export function useFetch(query: string) {
         );
         const data = await response.json();
         if (response.status === 500) {
-            setError(true)
+            setError(data);
         }
         setData(data);
         setStatus(true);

@@ -2,16 +2,13 @@ import {FC} from 'react';
 import {Button, Result, Space, Typography} from 'antd';
 import {CloseCircleTwoTone} from '@ant-design/icons';
 import * as styles from './DashboardErrors.module.scss'
+import {IError} from "../../types";
 
 const {Paragraph, Text} = Typography;
 
-type Error = {
-    debug: Array<any>
-    data: boolean
-    message: string
-}
+
 type Props = {
-    errors: Error[]
+    errors: IError[]
 }
 
 const debugTrace = (trace) => {
