@@ -1,8 +1,9 @@
 import React, {FC} from 'react'
-import {IField, ITab} from "../../types";
+import {IField, ISelect, ITab} from "../../types";
 import {CheckBoxField, InputField, TextAreaField} from "../index";
 import {Space, Form, Button} from "antd";
 import * as styles from './OptionsContent.module.scss'
+import {SelectField} from "../SelectField/SelectField";
 
 type Props = {
     fields: ITab[];
@@ -13,11 +14,12 @@ export const OptionsContent: FC<Props> = ({fields, activeTab}) => {
     const data = fields.filter(items => items.slug === activeTab)[0];
     const pluginData = window['themeoptionsApiNonce'];
 
-    const renderField = (data: IField) => {
+    const renderField = (data: IField | ISelect) => {
         const fields = {
             'input': <InputField key={data.slug} {...data} />,
             'textarea': <TextAreaField key={data.slug} {...data} />,
-            'checkbox': <CheckBoxField key={data.slug} {...data} />
+            'checkbox': <CheckBoxField key={data.slug} {...data} />,
+            'select': <SelectField key={data.slug} {...data as ISelect} />
         }
         return fields[data.type]
     }

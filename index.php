@@ -40,7 +40,7 @@ define( 'THEME_OPTIONS_ENV', $_SERVER['SERVER_NAME'] === 'localhost' ? 'developm
 require_once( THEME_OPTIONS_DIR . 'inc/Helpers.php' );
 require_once( THEME_OPTIONS_DIR . 'inc/Errors.php' );
 require_once( THEME_OPTIONS_DIR . 'inc/Admin.php' );
-require_once( THEME_OPTIONS_DIR . 'inc/Template.php' );
+require_once( THEME_OPTIONS_DIR . 'inc/Field.php' );
 require_once( THEME_OPTIONS_DIR . 'inc/Options.php' );
 require_once( THEME_OPTIONS_DIR . 'inc/RestAPI.php' );
 

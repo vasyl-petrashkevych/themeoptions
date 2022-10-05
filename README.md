@@ -27,20 +27,20 @@ add_filter('theme_options_fields', function($fields) ) {
     ```php
     use ThemeOptions\Template;
     ```
-2. Use ``Template class`` for adding news fields
+2. Use ``Field class`` for adding news fields
 
 ```php
-use ThemeOptions\Template;
+use ThemeOptions\Field;
 
 add_filter( 'theme_options_fields', function ( $fields ) {
 	$new_fields = [
-		Template::tab( 'main', 'Main', [
-				Template::input( 'slug', 'Title', '', 'Some Hint', true ),
-				Template::textarea( 'slug2', 'Title2', '', 'Some Hint2', true ),
+		Field::tab( 'main', 'Main', [
+				Field::input( 'slug', 'Title', '', 'Some Hint', true ),
+				Field::textarea( 'slug2', 'Title2', '', 'Some Hint2', true ),
 			]
 		),
-		Template::tab( 'main2', 'Main2', [
-				Template::checkbox( 'test3', 'Test2', '', 'Some Hint', true )
+		Field::tab( 'main2', 'Main2', [
+				Field::checkbox( 'test3', 'Test2', '', 'Some Hint', true )
 			]
 		)
 	];
@@ -71,7 +71,7 @@ Function will return the value.
 1. ```tab``` adds a new tab.
    <br />![This is an image](/assets/images/tab.jpg)
     ```php
-        Template::tab( string $slug, string $title, array $options)
+        Field::tab( string $slug, string $title, array $options)
    ```
     * ```$slug```  *string*  **Required**
       <br /> The name of the option field.
@@ -82,7 +82,7 @@ Function will return the value.
 2. ```input``` adds the input field.
    <br />![This is an image](/assets/images/input.jpg)
     ```php
-        Template::input( string $slug, string $title, string $default_value = '', string $hint = '', bool $required = false )
+        Field::input( string $slug, string $title, string $default_value = '', string $hint = '', bool $required = false )
    ```
     * ```$slug```  *string*  **Required**
       <br /> The name of the option field.
@@ -100,7 +100,7 @@ Function will return the value.
 3. ```textarea``` adds the textarea field.
    <br />![This is an image](/assets/images/textarea.jpg)
     ```php
-        Template::textarea( string $slug, string $title, string $default_value = '', string $hint = '', bool $required = false )
+        Field::textarea( string $slug, string $title, string $default_value = '', string $hint = '', bool $required = false )
    ```
     * ```$slug```  *string*  **Required**
       <br /> The name of the option field.
@@ -118,7 +118,7 @@ Function will return the value.
 4. ```checkbox``` adds the checkbox field.
    <br />![This is an image](/assets/images/checkbox.jpg)
     ```php
-        Template::checkbox( string $slug, string $title, bool $default_value = false, string $hint = '', bool $required = false )
+        Field::checkbox( string $slug, string $title, bool $default_value = false, string $hint = '', bool $required = false )
    ```
     * ```$slug```  *string*  **Required**
       <br /> The name of the option field.
