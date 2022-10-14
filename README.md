@@ -30,7 +30,11 @@ add_filter('theme_options_fields', function($fields) ) {
 2. Use ``Field class`` for adding news fields
 
 ```php
+<<<<<<< HEAD
 use ThemeSettings\Field;
+=======
+use ThemeOptions\Field;
+>>>>>>> bed4570 (feat: Add Select field)
 
 add_filter( 'theme_options_fields', function ( $fields ) {
 	$new_fields = [
