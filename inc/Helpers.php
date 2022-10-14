@@ -1,6 +1,6 @@
 <?php
 
-namespace ThemeOptions {
+namespace ThemeSettings {
 	class Helpers {
 		public const TEXT_DOMAIN     = 'themeoptions';
 		public const FILTER          = 'theme_options_errors';
@@ -15,7 +15,7 @@ namespace ThemeOptions {
 			return self::TEXT_DOMAIN . '_' . $slug;
 		}
 
-		public static function get_option_slug_name( string $slug ): string {
+		public static function get_setting_slug_name( string $slug ): string {
 			return str_replace( self::TEXT_DOMAIN . '_', '', $slug );
 		}
 	}

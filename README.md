@@ -25,12 +25,12 @@ add_filter('theme_options_fields', function($fields) ) {
 
 1. Firs apply namespace
     ```php
-    use ThemeOptions\Template;
+    use ThemeSettings\Template;
     ```
 2. Use ``Field class`` for adding news fields
 
 ```php
-use ThemeOptions\Field;
+use ThemeSettings\Field;
 
 add_filter( 'theme_options_fields', function ( $fields ) {
 	$new_fields = [

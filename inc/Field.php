@@ -1,6 +1,6 @@
 <?php
 
-namespace ThemeOptions {
+namespace ThemeSettings {
 	class Field {
 		private static function general_pattern( string $slug, string $title, string $default_value = '', string $hint = '', bool $required = false ): array {
 			return [

@@ -1,16 +1,16 @@
 <?php
 
-namespace ThemeOptions {
+namespace ThemeSettings {
 	class Admin {
 		private const OPTIONS_PAGE_URL = 'options-general.php?page=theme_options';
 
 		public static function init() {
-			add_action( 'admin_menu', [ 'ThemeOptions\Admin', 'admin_menu' ] );
-			add_action( 'admin_init', [ 'ThemeOptions\Admin', 'admin_init' ] );
-			add_action( 'admin_enqueue_scripts', [ 'ThemeOptions\Admin', 'register_scripts' ] );
+			add_action( 'admin_menu', [ 'ThemeSettings\Admin', 'admin_menu' ] );
+			add_action( 'admin_init', [ 'ThemeSettings\Admin', 'admin_init' ] );
+			add_action( 'admin_enqueue_scripts', [ 'ThemeSettings\Admin', 'register_scripts' ] );
 
 			add_filter( 'plugin_action_links_themeoptions/index.php', [
-				'ThemeOptions\Admin',
+				'ThemeSettings\Admin',
 				'add_action_links'
 			] );
 		}
@@ -25,7 +25,7 @@ namespace ThemeOptions {
 				Helpers::__( 'Theme Options' ),
 				'manage_options',
 				'theme_options',
-				[ 'ThemeOptions\Admin', 'options_page_content' ],
+				[ 'ThemeSettings\Admin', 'options_page_content' ],
 			);
 		}
 

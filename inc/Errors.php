@@ -1,6 +1,6 @@
 <?php
 
-namespace ThemeOptions {
+namespace ThemeSettings {
 	class Errors {
 		private static array $errors = [];
 
