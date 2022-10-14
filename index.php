@@ -37,21 +37,12 @@ define('THEME_OPTIONS_DIR', plugin_dir_path(__FILE__));
 define('THEME_OPTIONS_URI', plugin_dir_url(__FILE__));
 define('THEME_OPTIONS_ENV', $_SERVER['SERVER_NAME'] === 'localhost' ? 'development' : 'production');
 
-<<<<<<< HEAD
 require_once(THEME_OPTIONS_DIR . 'inc/Helpers.php');
 require_once(THEME_OPTIONS_DIR . 'inc/Errors.php');
 require_once(THEME_OPTIONS_DIR . 'inc/Admin.php');
 require_once(THEME_OPTIONS_DIR . 'inc/Field.php');
 require_once(THEME_OPTIONS_DIR . 'inc/Settings.php');
 require_once(THEME_OPTIONS_DIR . 'inc/RestAPI.php');
-=======
-require_once( THEME_OPTIONS_DIR . 'inc/Helpers.php' );
-require_once( THEME_OPTIONS_DIR . 'inc/Errors.php' );
-require_once( THEME_OPTIONS_DIR . 'inc/Admin.php' );
-require_once( THEME_OPTIONS_DIR . 'inc/Field.php' );
-require_once( THEME_OPTIONS_DIR . 'inc/Options.php' );
-require_once( THEME_OPTIONS_DIR . 'inc/RestAPI.php' );
->>>>>>> bed4570 (feat: Add Select field)
 
 add_action('admin_bar_menu', ['ThemeSettings\Admin', 'admin_bar_menu'], 100);
 add_action('init', ['ThemeSettings\Errors', 'catch_errors']);
