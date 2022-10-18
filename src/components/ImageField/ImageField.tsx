@@ -1,13 +1,19 @@
-import {FC} from 'react';
-import {IField, ISelect} from "../../types";
-import {Input, Form} from "antd";
-import {FieldTitle, FieldWrapper} from '../index'
+import React, {FC} from 'react';
+import {IField} from "../../types";
+import {FieldWrapper, ImageItem} from "../index";
+import {Form} from "antd";
+import {FieldTitle} from "../FieldTitle/FieldTitle";
+
+
 type Props = {
     fieldData: IField,
     tab: string
 }
-export const InputField: FC<Props> = ({fieldData, tab}) => {
+
+export const ImageField: FC<Props> = ({fieldData, tab}) => {
     const {slug, title, hint, required, value} = fieldData;
+
+
     return <FieldWrapper>
         <Form.Item
             name={`${tab}_${slug}`}
@@ -15,7 +21,8 @@ export const InputField: FC<Props> = ({fieldData, tab}) => {
             initialValue={value}
             rules={[{required, message: 'This field is required'}]}
         >
-            <Input/>
+            <ImageItem title={title}/>
         </Form.Item>
     </FieldWrapper>
-}
+};
+

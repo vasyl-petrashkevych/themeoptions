@@ -82,7 +82,7 @@ namespace ThemeSettings {
 			);
 		}
 
-		public static function select(string $slug, string $title, array $options, string $placeholder, string $hint = '', bool $required = false)
+		public static function select(string $slug, string $title, array $options, string $placeholder = 'Select', string $hint = '', bool $required = false)
 		{
 			if (gettype($options) !== 'array') {
 				Errors::add_error(Helpers::TEMPLATE_ERRORS, 'Options should be array', $options);

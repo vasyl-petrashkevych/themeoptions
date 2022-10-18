@@ -1,0 +1,47 @@
+.wrapper {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  align-items: center;
+}
+
+.box {
+  width: 200px;
+  height: 202px;
+  object-fit: contain;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  object-fit: contain;
+  max-height: 200px;
+}
+
+.icon {
+  padding: 5px;
+  background: #1890ff;
+  font-size: 28px;
+  border-radius: 2px;
+  transition: ease-in-out .3s;
+  color: #fff !important;
+
+  &:hover {
+    background: #40a9ff;
+  }
+
+}
+
+.hoverWrapper {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+}

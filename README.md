@@ -1,4 +1,4 @@
-# Theme Options v1.0.0
+# Theme Settings v1.0.0
 
 ## Installation
 
@@ -15,7 +15,7 @@
 In the ``functions.php`` use ``theme_options_fields`` filter.
 
 ```php 
-add_filter('theme_options_fields', function($fields) ) {
+add_filter('theme_settings_fields', function($fields) ) {
     // Maybe modify $fields in some way.
     return $fields;
 }
@@ -30,13 +30,8 @@ add_filter('theme_options_fields', function($fields) ) {
 2. Use ``Field class`` for adding news fields
 
 ```php
-<<<<<<< HEAD
 use ThemeSettings\Field;
-=======
-use ThemeOptions\Field;
->>>>>>> bed4570 (feat: Add Select field)
-
-add_filter( 'theme_options_fields', function ( $fields ) {
+add_filter( 'theme_settings_fields', function ( $fields ) {
 	$new_fields = [
 		Field::tab( 'main', 'Main', [
 				Field::input( 'slug', 'Title', '', 'Some Hint', true ),
@@ -54,8 +49,8 @@ add_filter( 'theme_options_fields', function ( $fields ) {
 ```
 
 Following code will generate nex option page
-![This is an image](/assets/images/screenshot_1.png)
-![This is an image](/assets/images/screenshot_2.png)
+![This is an image](./assets/images/screenshot_1.png)
+![This is an image](./assets/images/screenshot_2.png)
 
 ### How to display option value
 
@@ -73,7 +68,7 @@ Function will return the value.
 ### Template class methods
 
 1. ```tab``` adds a new tab.
-   <br />![This is an image](/assets/images/tab.jpg)
+   <br />![This is an image](./assets/images/tab.jpg)
     ```php
         Field::tab( string $slug, string $title, array $options)
    ```
@@ -84,7 +79,7 @@ Function will return the value.
     * ```$options```  *array*  **Required**
       <br /> Use to set the option fields for the current tab.
 2. ```input``` adds the input field.
-   <br />![This is an image](/assets/images/input.jpg)
+   <br />![This is an image](./assets/images/input.jpg)
     ```php
         Field::input( string $slug, string $title, string $default_value = '', string $hint = '', bool $required = false )
    ```
@@ -102,7 +97,7 @@ Function will return the value.
       <br /> Used to make field required.
       <br /> Default: ``false``.
 3. ```textarea``` adds the textarea field.
-   <br />![This is an image](/assets/images/textarea.jpg)
+   <br />![This is an image](./assets/images/textarea.jpg)
     ```php
         Field::textarea( string $slug, string $title, string $default_value = '', string $hint = '', bool $required = false )
    ```
@@ -120,7 +115,7 @@ Function will return the value.
       <br /> Used to make field required.
       <br /> Default: ``false``.
 4. ```checkbox``` adds the checkbox field.
-   <br />![This is an image](/assets/images/checkbox.jpg)
+   <br />![This is an image](./assets/images/checkbox.jpg)
     ```php
         Field::checkbox( string $slug, string $title, bool $default_value = false, string $hint = '', bool $required = false )
    ```
@@ -131,6 +126,25 @@ Function will return the value.
     * ```$default_value```  *bool*  **Optional**
       <br /> Used to set value by default.
       <br /> Default: ``false``.
+    * ```$hint```  *string*  **Optional**
+      <br /> Used to set hint for the user.
+      <br /> Default: `` ``.
+    * ```$required```  *bool*  **Optional**
+      <br /> Used to make field required.
+      <br /> Default: ``false``.
+5. ```image``` adds the media library selector field.
+   <br />![This is an image](./assets/images/ImageField.png)
+   <br />![This is an image](./assets/images/ImageFieldHasImage.png)
+    ```php
+        Field::image( string $slug, string $title, string $default_value = '', string $hint = '', bool $required = false )
+   ```
+    * ```$slug```  *string*  **Required**
+      <br /> The name of the option field.
+    * ```$title```  *string*  **Required**
+      <br /> The title of the option field.
+    * ```$default_value```  *string*  **Optional**
+      <br /> Used to set value by default.
+      <br /> Default: `` ``.
     * ```$hint```  *string*  **Optional**
       <br /> Used to set hint for the user.
       <br /> Default: `` ``.

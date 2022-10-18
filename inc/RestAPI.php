@@ -50,10 +50,10 @@ namespace ThemeSettings {
 		{
 			$data = json_decode($request->get_body(), true);
 
-			if (!get_setting(Helpers::generate_option_name($data['slug']))) {
-				$response = add_option(Helpers::generate_option_name($data['slug']), json_encode($data['values']));
+			if (!get_option(Helpers::generate_option_name($data['slug']))) {
+				$response = add_option(Helpers::generate_option_name($data['slug']), Helpers::generate_values($data['values']));
 			} else {
-				$response = update_option(Helpers::generate_option_name($data['slug']), json_encode($data['values']));
+				$response = update_option(Helpers::generate_option_name($data['slug']), Helpers::generate_values($data['values']));
 			}
 
 			return new WP_REST_Response(['response' => $response], 200);

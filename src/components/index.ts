@@ -9,3 +9,5 @@ export * from './FieldWrapper/FieldWrapper';
 export * from './TextAreaField/TextAreaField';
 export * from './CheckBoxField/CheckBoxField';
 export * from './DashboardErrors/DashboardErrors';
+export * from './ImageField/ImageField';
+export * from './ImageItem/ImageItem';

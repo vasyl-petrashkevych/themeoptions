@@ -63,6 +63,7 @@ namespace ThemeSettings {
 				wp_register_script( Helpers::TEXT_DOMAIN, THEME_OPTIONS_URI . 'assets/js/main.min.js', [], THEME_OPTIONS_VERSION, true );
 				wp_register_script( Helpers::TEXT_DOMAIN . '_vendor', THEME_OPTIONS_URI . 'assets/js/vendor.min.js', [], THEME_OPTIONS_VERSION, true );
 			}
+			wp_enqueue_media();
 			wp_localize_script(
 				Helpers::TEXT_DOMAIN,
 				Helpers::TEXT_DOMAIN . 'Plugin',

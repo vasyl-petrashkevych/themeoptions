@@ -64,3 +64,9 @@
 #wpcontent {
   height: calc(100vh - 32px);
 }
+
+
+.ant-image-preview-root {
+  z-index: 100000;
+  position: fixed;
+}

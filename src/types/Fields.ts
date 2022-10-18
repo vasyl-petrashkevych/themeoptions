@@ -1,3 +1,5 @@
+import {FC, ReactElement} from 'react';
+
 export type ITab = {
     slug: string,
     title: string,
@@ -24,4 +26,12 @@ export interface ISelect extends IField {
 export type IError = {
     debug: Array<any>
     message: string
+}
+
+export type IFields =  {
+    input: ReactElement
+    textarea: ReactElement
+    checkbox: ReactElement
+    image: ReactElement
+    select: ReactElement
 }

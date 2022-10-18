@@ -15,8 +15,12 @@ namespace ThemeSettings {
 			return self::TEXT_DOMAIN . '_' . $slug;
 		}
 
-		public static function get_setting_slug_name( string $slug ): string {
-			return str_replace( self::TEXT_DOMAIN . '_', '', $slug );
+		public static function generate_values(array $data): string {
+			$response = [];
+				foreach ($data as $key => $value) {
+					$response[explode( '_', $key )[1]] = $value;
+				}
+			return json_encode($response);
 		}
 	}
 }

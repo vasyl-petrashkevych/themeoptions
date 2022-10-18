@@ -5,12 +5,17 @@ import {FieldTitle} from "../FieldTitle/FieldTitle";
 import {FieldWrapper} from "../FieldWrapper/FieldWrapper";
 
 const {Option} = Select;
+type Props = {
+    fieldData: ISelect,
+    tab: string
+}
 
-export const SelectField: FC<ISelect> = (props) => {
-    const {slug, title, hint, required, value, options, placeholder} = props;
+export const SelectField: FC<Props> = ({fieldData, tab}) => {
+    const {slug, title, hint, required, value, options, placeholder} = fieldData;
+
     return <FieldWrapper>
         <Form.Item
-            name={slug}
+            name={`${tab}_${slug}`}
             label={<FieldTitle title={title} hint={hint}/>}
             initialValue={value !== '' ? value : null}
             rules={[{required, message: 'This field is required'}]}
